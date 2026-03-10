@@ -1,0 +1,77 @@
+body {
+  font-family: Mathematical;
+  margin: 0;
+  background: #edd8dcd2;
+}
+
+header {
+  background: #080030;
+  color: rgb(242, 244, 225);
+  padding: 13px;
+  display: flex;
+  justify-content: space-between;
+}
+.menu {
+  background: #12004a;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 12px;
+}
+.menu a {
+  color: rgb(242, 244, 225);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.menu a:hover {
+  color: #9865b0;
+}
+.menu a {
+  color: white;
+  text-decoration: none;
+  position: relative;
+}
+
+.menu a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: white;
+  left: 0;
+  bottom: -3px;
+  transition: 0.3s;
+}
+
+.menu a:hover::after {
+  width: 100%;
+}
+.produtos {
+  display: flex;
+  gap: 20px;
+  padding: 22px;
+}
+
+.produto {
+  background: white;
+  padding: 150px;
+  border-radius: 15px;
+  width: 130px;
+  text-align: center;
+  box-shadow: 0 15px 50px rgba(47, 27, 90, 0.616);
+}
+
+button {
+  background: rgba(74, 7, 103, 0.731);
+  color: white;
+  border: none;
+  padding: 4.5px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background: rgb(92, 0, 100);
+}

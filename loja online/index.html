@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minha Loja</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>📎 Minha Loja</h1>
+    <div class="carrinho">
+    🛒 Carrinho: <span id="itens">0</span> itens - R$ <span id="valor">0.00</span>
+    </div>
+  </header>
+  <nav class="menu" aria-label="Categorias">
+    <a href="#roupas">🕺Roupas Masculinas</a>
+    <a href="#roupas">💃Roupas Femininas</a>
+    <a href="#roupas">🥾Roupas Para Os Pés</a>
+  </nav>
+
+  <main class="produtos">
+    
+    <div class="produto">
+      <img src=img/camisa.jpg alt="camisa" height="220" >
+      <h2>Camiseta</h2>
+      <p>R$ 50,00</p>
+      <button onclick="adicionar('Camiseta', 50)">Adicionar</button>
+    </div>
+
+    <div class="produto">
+      <img src=img/Tênis.jpg alt="Tênis" height="120" >
+      <h2>Tênis</h2>
+      <p>R$ 200,43</p>
+      <button onclick="adicionar('Tênis', 200.43)">Adicionar</button>
+    </div>
+
+    <div class="produto">
+      <img src=img/Boné.jpg alt="Boné" height="120" >
+      <h2>Boné</h2>
+      <p>R$ 30,98</p>
+      <button onclick="adicionar('Boné', 30.98)">Adicionar</button>
+    </div>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
