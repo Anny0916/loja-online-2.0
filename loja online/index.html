@@ -11,9 +11,19 @@
 
   <header>
     <h1>📎 Minha Loja</h1>
-    <div class="carrinho">
-    🛒 Carrinho: <span id="itens">0</span> itens - R$ <span id="valor">0.00</span>
+<div id="toast-notificacao" class="toast">Produto adicionado! ✅</div>
+<button id="open-cart">Abrir Carrinho 🛒</button>
+<div id="cart-sidebar" class="cart">
+    <div class="cart-header">
+        <h2>Seu Carrinho</h2>
+        <button id="close-cart">&times;</button>
     </div>
+    <div class="cart-content">
+        <p style="color: #111;">O carrinho está vazio.</p>
+    </div>
+</div>
+<div id="cart-overlay"></div>
+
   </header>
   <nav class="menu" aria-label="Categorias">
     <a href="#roupas">🕺Roupas Masculinas</a>
