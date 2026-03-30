@@ -1,48 +1,44 @@
+// Seleção de Elementos
 const openBtn = document.getElementById('open-cart');
 const closeBtn = document.getElementById('close-cart');
-const cart = document.getElementById('cart-sidebar');
+const cartSidebar = document.getElementById('cart-sidebar');
 const overlay = document.getElementById('cart-overlay');
-const cartContent = document.querySelector('.cart-content');
+const cartContent = document.getElementById('cart-items');
 const toast = document.getElementById('toast-notificacao');
 
 let itensCarrinho = [];
 
-const openCart = () => {
-    cart.classList.add('active');
-    overlay.classList.add('active');
+// Funções para Abrir/Fechar Carrinho
+const toggleCart = () => {
+    cartSidebar.classList.toggle('active');
+    overlay.classList.toggle('active');
 };
 
-const closeCart = () => {
-    cart.classList.remove('active');
-    overlay.classList.remove('active');
-};
+openBtn.onclick = toggleCart;
+closeBtn.onclick = toggleCart;
+overlay.onclick = toggleCart;
 
-openBtn.addEventListener('click', openCart);
-closeBtn.addEventListener('click', closeCart);
-overlay.addEventListener('click', closeCart);
-
+// Função Adicionar ao Carrinho
 function adicionar(nome, preco) {
     itensCarrinho.push({ nome, preco });
+    atualizarInterfaceCarrinho();
     
-    atualizarCarrinho();
-
-    if (toast) {
-        toast.innerText = `${nome} adicionado! ✅`;
-        toast.classList.add('mostrar');
-        setTimeout(() => {
-            toast.classList.remove('mostrar');
-        }, 2000);
-    }
+    // Mostrar Toast
+    toast.innerText = `${nome} adicionado! ✅`;
+    toast.style.display = 'block';
+    setTimeout(() => { toast.style.display = 'none'; }, 2000);
 }
 
+// Função Remover do Carrinho
 function removerItem(index) {
     itensCarrinho.splice(index, 1);
-    atualizarCarrinho();
+    atualizarInterfaceCarrinho();
 }
 
-function atualizarCarrinho() {
+// Atualizar a lista visual do carrinho
+function atualizarInterfaceCarrinho() {
     if (itensCarrinho.length === 0) {
-        cartContent.innerHTML = '<p style="color: #111;">O carrinho está vazio.</p>';
+        cartContent.innerHTML = '<p style="color: #999; text-align: center; margin-top: 50px;">O carrinho está vazio.</p>';
         return;
     }
 
@@ -52,19 +48,33 @@ function atualizarCarrinho() {
     itensCarrinho.forEach((item, index) => {
         total += item.preco;
         cartContent.innerHTML += `
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid #eee; padding-bottom: 8px;">
-                <div style="color: #111;">
-                    <strong style="display: block;">${item.nome}</strong>
-                    <span>R$ ${item.preco.toFixed(2)}</span>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #f0f0f0;">
+                <div style="text-align: left;">
+                    <strong style="font-size: 0.9rem; color: #333;">${item.nome}</strong><br>
+                    <span style="color: #6b3fa0; font-weight: bold;">R$ ${item.preco.toFixed(2)}</span>
                 </div>
-                <button onclick="removerItem(${index})" style="background: none; border: none; color: #ff4d4d; font-weight: bold; cursor: pointer; font-size: 18px;">&times;</button>
+                <button onclick="removerItem(${index})" style="color: #e74c3c; border: none; background: none; font-size: 1.5rem; cursor: pointer;">&times;</button>
             </div>
         `;
     });
 
+    // Adiciona o Total no fim
     cartContent.innerHTML += `
-        <div style="margin-top: 15px; font-weight: bold; color: #3230b9; text-align: right; font-size: 1.1rem; border-top: 2px solid #eee; padding-top: 10px;">
-            Total: R$ ${total.toFixed(2)}
+        <div style="margin-top: auto; padding-top: 20px; border-top: 2px solid #6b3fa0; text-align: right;">
+            <h3 style="color: #333;">Total: R$ ${total.toFixed(2)}</h3>
+            <button style="width: 100%; background: #2ecc71; color: white; border: none; padding: 15px; border-radius: 8px; margin-top: 15px; font-weight: bold; cursor: pointer;">Finalizar Compra</button>
         </div>
     `;
 }
+
+// Sistema de Busca em Tempo Real
+document.getElementById('input-busca').addEventListener('input', (e) => {
+    const termo = e.target.value.toLowerCase();
+    const todosProdutos = document.querySelectorAll('.produto');
+
+    todosProdutos.forEach(prod => {
+        const nome = prod.querySelector('h3').innerText.toLowerCase();
+        // Se o nome contiver o termo da busca, mostra (flex), senão esconde (none)
+        prod.style.display = nome.includes(termo) ? 'flex' : 'none';
+    });
+});
