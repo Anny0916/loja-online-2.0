@@ -4,55 +4,137 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Minha Loja</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Smart Garden Store</title>
+  <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
 
   <header>
-    <h1>📎 Minha Loja</h1>
-<div id="toast-notificacao" class="toast">Produto adicionado! ✅</div>
-<button id="open-cart">Abrir Carrinho 🛒</button>
-<div id="cart-sidebar" class="cart">
-    <div class="cart-header">
-        <h2>Seu Carrinho</h2>
-        <button id="close-cart">&times;</button>
+    <h1>📎 Root </h1>
+    <div id="toast-notificacao" class="toast">Produto adicionado! ✅</div>
+    <button id="open-cart">Abrir Carrinho 🛒</button>
+    <div class="search-container">
+        <input type="text" id="input-busca" placeholder="Pesquisar produto...">
     </div>
-    <div class="cart-content">
-        <p style="color: #111;">O carrinho está vazio.</p>
-    </div>
-</div>
-<div id="cart-overlay"></div>
 
+    <div id="cart-sidebar" class="cart">
+        <div class="cart-header">
+            <h2>Seu Carrinho</h2>
+            <button id="close-cart">&times;</button>
+        </div>
+        <div id="cart-items" class="cart-content">
+            <p style="color: #111;">O carrinho está vazio.</p>
+        </div>
+    </div>
+    <div id="cart-overlay"></div>
   </header>
+
   <nav class="menu" aria-label="Categorias">
-    <a href="#roupas">🕺Roupas Masculinas</a>
-    <a href="#roupas">💃Roupas Femininas</a>
-    <a href="#roupas">🥾Roupas Para Os Pés</a>
+    <a href="#maquinas">Máquinas</a>
+    <a href="#irrigacao">Irrigação</a>
+    <a href="#sensores">Sensores</a>
+    <a href="#cultivo">Cultivo Indoor</a>
   </nav>
 
-  <main class="produtos">
+  <main class="produtos-container">
     
-    <div class="produto">
-      <img src=img/camisa.jpg alt="camisa" height="220" >
-      <h2>Camiseta</h2>
-      <p>R$ 50,00</p>
-      <button onclick="adicionar('Camiseta', 50)">Adicionar</button>
-    </div>
+    <!-- CATEGORIA: MÁQUINAS -->
+    <h2 class="category-title" id="maquinas">Máquinas</h2>
+    <section class="vitrine">
+      <div class="produto">
+        <img src="img/automover.jpg" alt="Husqvarna Automower">
+        <h3>Husqvarna Automower 310</h3>
+        <p>R$ 15.000,00</p>
+        <button onclick="adicionar('Automower 310', 15000.00)">Adicionar</button>
+      </div>
+      <div class="produto">
+        <img src="img/robot.jpg" alt="Robomow RT700">
+        <h3>Robomow RT700</h3>
+        <p>R$ 8.500,00</p>
+        <button onclick="adicionar('Robomow RT700', 8500.00)">Adicionar</button>
+      </div>
+    </section>
 
-    <div class="produto">
-      <img src=img/Tênis.jpg alt="Tênis" height="120" >
-      <h2>Tênis</h2>
-      <p>R$ 200,43</p>
-      <button onclick="adicionar('Tênis', 200.43)">Adicionar</button>
-    </div>
+    <!-- CATEGORIA: IRRIGAÇÃO -->
+    <h2 class="category-title" id="irrigacao">Irrigação</h2>
+    <section class="vitrine">
+      <div class="produto">
+        <img src="img/Gardena.jpg" alt="Gardena Smart Water">
+        <h3>Gardena Smart Water Control</h3>
+        <p>R$ 1.200,00</p>
+        <button onclick="adicionar('Gardena Smart', 1200.00)">Adicionar</button>
+      </div>
+      <div class="produto">
+        <img src="img/ranchio.jpg" alt="Rachio 3 Smart Controller">
+        <h3>Rachio 3 Smart Controller</h3>
+        <p>R$ 2.400,00</p>
+        <button onclick="adicionar('Rachio 3 Smart', 2400.00)">Adicionar</button>
+      </div>
+      <div class="produto">
+        <img src="img/orbit.jpg" alt="Orbit B-hyve">
+        <h3>Orbit B-hyve Smart Timer</h3>
+        <p>R$ 950,00</p>
+        <button onclick="adicionar('Orbit B-hyve', 950.00)">Adicionar</button>
+      </div>
+      <div class="produto">
+        <img src="img/rainbird.jpg" alt="Rain Bird ESP-ME3">
+        <h3>Rain Bird ESP-ME3 Smart</h3>
+        <p>R$ 1.980,00</p>
+        <button onclick="adicionar('Rain Bird ESP-ME3', 1980.00)">Adicionar</button>
+      </div>
+      <div class="produto">
+        <img src="img/rainclik.jpg" alt="Hunter Rain-Click">
+        <h3>Hunter Rain-Click (Wireless)</h3>
+        <p>R$ 650,00</p>
+        <button onclick="adicionar('Hunter Rain-Click', 650.00)">Adicionar</button>
+      </div>
+    </section>
 
-    <div class="produto">
-      <img src=img/Boné.jpg alt="Boné" height="120" >
-      <h2>Boné</h2>
-      <p>R$ 30,98</p>
-      <button onclick="adicionar('Boné', 30.98)">Adicionar</button>
-    </div>
+    <!-- CATEGORIA: SENSORES -->
+    <h2 class="category-title" id="sensores">Sensores</h2>
+    <section class="vitrine">
+      <div class="produto">
+        <img src="img/flora.jpg" alt="Xiaomi Mi Flora">
+        <h3>Xiaomi Mi Flora (Sensor)</h3>
+        <p>R$ 220,00</p>
+        <button onclick="adicionar('Xiaomi Mi Flora', 220.00)">Adicionar</button>
+      </div>
+      <div class="produto">
+        <img src="img/netano.jpg" alt="Netatmo Station">
+        <h3>Estação Netatmo Weather</h3>
+        <p>R$ 1.850,00</p>
+        <button onclick="adicionar('Netatmo Weather', 1850.00)">Adicionar</button>
+      </div>
+      <div class="produto">
+        <img src="img/max.jpg" alt="Ecowitt Soil Moisture">
+        <h3>Ecowitt Soil Sensor</h3>
+        <p>R$ 380,00</p>
+        <button onclick="adicionar('Ecowitt Sensor', 380.00)">Adicionar</button>
+      </div>
+    </section>
+
+    <!-- CATEGORIA: CULTIVO INDOOR -->
+    <h2 class="category-title" id="cultivo">Cultivo Indoor</h2>
+    <section class="vitrine">
+      <div class="produto">
+        <img src="img/garden.jpg" alt="Click & Grow">
+        <h3>Smart Garden Click & Grow</h3>
+        <p>R$ 890,00</p>
+        <button onclick="adicionar('Click & Grow', 890.00)">Adicionar</button>
+      </div>
+      <div class="produto">
+        <img src="img/aerogarden.jpg" alt="AeroGarden Bounty">
+        <h3>AeroGarden Bounty Elite</h3>
+        <p>R$ 3.200,00</p>
+        <button onclick="adicionar('AeroGarden Bounty', 3200.00)">Adicionar</button>
+      </div>
+      <div class="produto">
+        <img src="img/rise.jpg" alt="Rise Personal Garden">
+        <h3>Rise Personal Garden</h3>
+        <p>R$ 4.100,00</p>
+        <button onclick="adicionar('Rise Personal Garden', 4100.00)">Adicionar</button>
+      </div>
+    </section>
 
   </main>
 
